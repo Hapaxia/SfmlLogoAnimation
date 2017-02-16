@@ -18,5 +18,6 @@ All notable changes to this project will be documented in this file.
 ### Added
 - Full version
 
+[1.1.0]: https://github.com/Hapaxia/SfmlLogoAnimation/commit/42fbabb2ae149299a75c0b5cbb26fbb2b1f22003
 [1.0.1]: https://github.com/Hapaxia/SfmlLogoAnimation/commit/79f17041b47b34131ec07d1643a2c561b90fa401
 [1.0.0]: https://github.com/Hapaxia/SfmlLogoAnimation/commit/262243ce08dd36b191459f51acaaf58169a85648
