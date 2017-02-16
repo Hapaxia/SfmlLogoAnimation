@@ -58,9 +58,21 @@ int main()
 	logoAnim.skipKeys.emplace_back(sf::Keyboard::Key::Space);
 	logoAnim.skipKeys.emplace_back(sf::Keyboard::Key::Return);
 
+	// customise
+	logoAnim.volume = 0.5f; // default is 1.f
+	logoAnim.shakeStrength = 75.f; // default is 50.f
+	logoAnim.letterScale = 1.f; // default is 0.7f
+	logoAnim.shakeLength = sf::seconds(1.7f); // default is 0.6 seconds
+	logoAnim.fadeStart = sf::seconds(6.f); // default is 11 seconds
+	logoAnim.length = sf::seconds(8.f); // default is 13 seconds (approx. length of sound)
+
 	// play animation
 	if (!logoAnim.play())
 		window.close();
+
+	// wait for sound to finish playing
+	while (!logoAnim.isSoundFinished())
+		;
 
 	// (a normal window loop could go here)
 

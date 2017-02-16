@@ -45,12 +45,13 @@ SfmlLogoAnimation::SfmlLogoAnimation(sf::RenderWindow& theWindow)
 	, sound(soundBuffer)
 	, widescreenSize(960.f, 540.f)
 	, startingView({ 0.f, 0.f }, { widescreenSize.y * (theWindow.getView().getSize().x / theWindow.getView().getSize().y), widescreenSize.y })
-	, letterScale(0.7f)
-	, length(sf::seconds(13.f))
-	, fadeStart(sf::seconds(11.f))
 	, shakeStart(sf::seconds(1.944f))
-	, shakeLength(sf::seconds(0.6f))
+	, volume(1.f)
 	, shakeStrength(50.f)
+	, letterScale(0.7f)
+	, shakeLength(sf::seconds(0.6f))
+	, fadeStart(sf::seconds(11.f))
+	, length(sf::seconds(13.f))
 {
 	logo.setTexture(texture);
 	theS.setTexture(texture);
@@ -118,13 +119,22 @@ bool SfmlLogoAnimation::play()
 		window.draw(theL);
 		window.display();
 	}
-	sound.stop();
 	return true;
+}
+
+bool SfmlLogoAnimation::isSoundFinished() const
+{
+	return (sound.getStatus() == sf::Sound::Status::Stopped);
+}
+
+void SfmlLogoAnimation::stopSound()
+{
+	sound.stop();
 }
 
 void SfmlLogoAnimation::priv_prepareSound()
 {
-	//sound.setVolume(0.5f * 100.f);
+	sound.setVolume(volume * 100.f);
 }
 
 void SfmlLogoAnimation::priv_prepareSprites()

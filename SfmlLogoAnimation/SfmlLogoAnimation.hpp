@@ -39,6 +39,7 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/Keyboard.hpp>
 
+// SFML Logo Animation v1.1
 class SfmlLogoAnimation
 {
 public:
@@ -48,20 +49,24 @@ public:
 	std::vector<sf::Keyboard::Key> exitKeys;
 	std::vector<sf::Keyboard::Key> skipKeys;
 
+	float volume; // multiplier (range 0 - 1)
+	float shakeStrength;
+	float letterScale;
+	sf::Time shakeLength;
+	sf::Time fadeStart;
+	sf::Time length;
+
 	SfmlLogoAnimation(sf::RenderWindow& window);
 	bool play();
+	bool isSoundFinished() const;
+	void stopSound();
 
 
 
 private:
 	const sf::Vector2f widescreenSize;
 	const sf::View startingView;
-	const float letterScale;
-	const sf::Time length;
-	const sf::Time fadeStart;
 	const sf::Time shakeStart;
-	const sf::Time shakeLength;
-	const float shakeStrength;
 	sf::RenderWindow& window;
 	sf::Clock clock;
 	sf::Sound sound;
